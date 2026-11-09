@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive Gaussian mixture visualizer: pick 2–5 components and see the combined PDF and CDF.">
+  <title>Gaussian Mixture Viz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="head">
+      <h1>Gaussian mixture</h1>
+      <p class="formula">f(x) = Σ w<sub>i</sub> · N(x; μ<sub>i</sub>, σ<sub>i</sub>) &nbsp;·&nbsp; F(x) = Σ w<sub>i</sub> · Φ((x − μ<sub>i</sub>) / σ<sub>i</sub>)</p>
+    </header>
+
+    <section class="toolbar" aria-label="Controls">
+      <div class="field">
+        <span class="field-label" id="n-label">Components</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="n-label" id="n-select">
+          <button type="button" role="radio" data-n="2">2</button>
+          <button type="button" role="radio" data-n="3">3</button>
+          <button type="button" role="radio" data-n="4">4</button>
+          <button type="button" role="radio" data-n="5">5</button>
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="lock-axes"> Lock axes</label>
+      <div class="actions">
+        <button type="button" class="btn" id="randomize">Randomize</button>
+        <button type="button" class="btn" id="reset">Reset</button>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section class="cards" id="cards" aria-label="Components"></section>
+
+      <section class="charts">
+        <div class="stats" id="stats"></div>
+
+        <figure class="chart-card">
+          <figcaption>
+            <span class="chart-title">Probability density f(x)</span>
+            <span class="legend" id="legend"></span>
+          </figcaption>
+          <div class="chart" id="pdf-chart"></div>
+        </figure>
+
+        <figure class="chart-card">
+          <figcaption><span class="chart-title">Cumulative distribution F(x)</span></figcaption>
+          <div class="chart" id="cdf-chart"></div>
+        </figure>
+
+        <details class="table-view">
+          <summary>Data table</summary>
+          <div class="table-wrap"><table id="data-table"></table></div>
+        </details>
+      </section>
+    </div>
+
+    <footer class="foot">Weights are normalized to sum to 1. The URL keeps your settings, so you can share a configuration as a link.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

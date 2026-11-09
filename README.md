@@ -11,3 +11,9 @@ Weights are normalized so they always sum to 1.
 
 ## Run locally
 Open `index.html` in a browser. No build step needed.
+
+## Play online
+**https://ophirbetser.github.io/gaussian-mixture-viz/**
+
+Every push to `main` deploys automatically with GitHub Actions to GitHub Pages
+(see `.github/workflows/deploy.yml`).
